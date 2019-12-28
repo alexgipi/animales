@@ -1,0 +1,330 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* BARRA HEADER TOP */
+
+.header-top {
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    height: 90px;
+    background: #111111;
+    color: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    padding: 0 30px;
+}
+
+    .header-top .contenedor {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+
+        .header-top--izq {
+            flex: 1;
+            height: 100%;
+        }
+
+            .header-top .logo {
+                height: 90px;
+            }
+                .header-top .logo img {
+                    height: 100%;
+                }
+
+        .header-top--centro {
+            flex: 2;
+        }
+            .header-top--centro .barra-busqueda {
+                height: 40px;
+                border-radius: 5px;
+                overflow: hidden;
+                position: relative;
+            }
+                .header-top--centro .barra-busqueda input {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    border: none;
+                    background: #fff;
+                    width: 100%;
+                    height: 100%;
+                    padding: 0 45px 0 15px;
+                    outline: none;
+                }
+
+                .header-top--centro .barra-busqueda button {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 45px;
+                    border: none;
+                    background: #ececec;
+                    color: #111111;
+                    outline: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                }
+
+        .header-top--der {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+            .header-top--menu {
+                display: flex;
+            }
+
+                .header-top--menu a {
+                    color: #fff;
+                    font-size: 1.1rem;
+                    margin-left: 29px;
+                }
+
+                .header-top--menu a.activo {
+                    color: #fac118;
+                }
+
+        .btn-abrir-menu-movil {
+            width: 50px;
+            height: 50px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+            .btn-abrir-menu-movil i {
+                font-size: 2.7rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+
+
+/* CONTENIDO */
+.contenido {
+    flex: auto;
+    padding: 30px;
+}
+
+/* CONTENEDOR */
+.contenedor {
+    max-width: 1800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* TITULO PRINCIPAL */
+
+.titulo-principal {
+    margin: 25px 0;
+    font-size: 1.3rem;
+    color: #111;
+    text-align: center;
+}
+
+/* PARRAFO TEXTO INTRO */
+.texto-intro {
+    margin-bottom: 30px;
+    line-height: 1.5;
+    color: #333;
+    font-size: 1.07rem;
+    text-align: center;
+}
+
+/* GRID de CARDS */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(calc(280px - 20px), 1fr));
+    grid-gap: 20px;
+}
+
+    .grid-cards .card {
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 1px 1px 5px rgb(91, 91, 91);
+        cursor: pointer;
+    }
+
+        .grid-cards .card::before {
+            content: '';
+            display: block;
+            padding-top: 100%;
+        }
+
+        .grid-cards .card .contenido-card {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            position: absolute;
+        }
+
+            .card .contenido-card .titulo-card {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                min-height: 45px;
+                background: rgba(0,0,0,0.6);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                padding: 0 15px;
+                font-weight: bold;
+                font-size: 1rem;
+            }
+
+            .card .contenido-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+/*FOOTER*/
+.footer {
+    height: 90px;
+    background: #f3f3f3;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+/*******************************************************************/
+/************************ RESPONSIVE HEADER ************************/
+/*******************************************************************/
+
+@media screen and (max-width:920px){
+    .barra-busqueda input { /* Ocultar el input de la barra de busqueda*/
+        display: none;
+    }
+
+    .barra-busqueda button { /* Modificar estilo del boton de busqueda sin input */
+        border-radius: 5px;
+    }
+}
+
+@media screen and (max-width:720px){
+    .barra-busqueda input { /* Mostrar el input de la barra de busqueda*/
+        display: flex;
+    }
+
+    .barra-busqueda button { /* Devolver a estilo de boton de busqueda con input*/
+        border-radius: 0;
+    }
+
+    .header-top--menu { /* Ocultar menu del header top */
+        display: none;
+    }
+    
+    .btn-abrir-menu-movil { /*Mostrar boton abrir menu movil*/
+        display: flex;
+    }
+
+    .header-top--der {
+        flex: 0;
+    }
+
+    .header-top--centro {
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width:660px){
+
+    .header-top {
+        padding: 0 15px;
+    }
+
+    .contenido {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width:450px){
+
+    .barra-busqueda input { /* Ocultar el input de la barra de busqueda*/
+        display: none;
+    }
+
+    .barra-busqueda button { /* Modificar estilo del boton de busqueda sin input */
+        border-radius: 5px;
+    }
+}
+
+/********************************************************************/
+/********************** RESPONSIVE GRID CARDS ***********************/
+/********************************************************************/
+@media screen and (max-width:1440px){
+
+    .grid-cards {
+        grid-template-columns: repeat(auto-fit,minmax(calc(250px - 20px), 1fr));
+    }
+}
+
+@media screen and (max-width:1160px){
+
+    .grid-cards {
+        grid-template-columns: repeat(auto-fit,minmax(calc(240px - 20px), 1fr));
+    }
+}
+
+@media screen and (max-width:760px){
+
+    .grid-cards {
+        grid-template-columns: repeat(auto-fit,minmax(calc(215px - 20px), 1fr));
+    }
+}
+
+
+@media screen and (max-width:660px){
+
+    .grid-cards {
+        grid-template-columns: repeat(auto-fit,minmax(calc(215px - 20px), 1fr));
+        grid-gap: 15px;
+    }
+    
+}
+
+@media screen and (max-width:435px){
+
+    .grid-cards {
+        grid-template-columns: repeat(auto-fit,minmax(calc(150px - 20px), 1fr));
+        grid-gap: 15px;
+    }
+    
+}
+
+
